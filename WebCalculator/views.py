@@ -39,7 +39,15 @@ def hello_world(request):
 @api_view()
 def multiply(request):
     """
-
+    A multiplication function. 
+    multiply(
+        a: int,
+        b: int,
+        ret: int
+    )
+    example call: **whatever_host**/multiply/?a=1&b=2
+    should return a json looks like:
+    {'function': 'multiply','result': 2}
     """
     try:
         first_number = int(request.GET.get('a'))
@@ -51,6 +59,14 @@ def multiply(request):
 
 @api_view()
 def divide(request):
+    """
+    A division function. 
+    divide(
+        a: int,
+        b: int,
+        ret: int
+    )
+    """
     try:
         first_number = int(request.GET.get('a'))
         second_number = int(request.GET.get('b'))
@@ -60,6 +76,21 @@ def divide(request):
 
 @api_view()
 def asian_option(request):
+    """
+    An example financial function. 
+    asian_option(
+        L: float,
+        s0: float,
+        r: float,
+        q: float,
+        K: float,
+        Sigma: float,
+        T: float,
+        phi: float,
+        N: int,
+        ret: float
+    )
+    """
     def GeometricAverage(L,s0,r,q,K,Sigma,T,phi):
         SigmaA=Sigma/sqrt(3.0)
         ba=0.5*(r-q-Sigma*Sigma/6.0)
