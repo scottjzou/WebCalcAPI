@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'rest_framework',
+    # 'rest_framework_swagger',
 ]
 
 MIDDLEWARE_CLASSES = [
@@ -52,7 +53,7 @@ MIDDLEWARE_CLASSES = [
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
-ROOT_URLCONF = 'xQuantWebCalculator.urls'
+ROOT_URLCONF = 'WebCalculator.urls'
 
 TEMPLATES = [
     {
@@ -70,7 +71,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'xQuantWebCalculator.wsgi.application'
+WSGI_APPLICATION = 'WebCalculator.wsgi.application'
 
 
 # Database

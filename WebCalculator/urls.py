@@ -1,4 +1,4 @@
-"""xQuantWebCalculator URL Configuration
+"""WebCalculator URL Configuration
 
 The `urlpatterns` list routes URLs to views. For more information please see:
     https://docs.djangoproject.com/en/1.9/topics/http/urls/
@@ -13,14 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url, include
 
-from views import multiply, divide, hello_world, asian_option
+import views
 
 
 urlpatterns = [
-    url(r'^multiply/?$', multiply),
-    url(r'^divide/?$', divide),
-    url(r'^hello_world/$', hello_world),
-    url(r'^asian_option/?$', asian_option),
+    #root
+    url(r'^$', views.api_root, name='api_root'),
+
+    #functions
+    url(r'^multiply/?$', views.multiply, name='multiply'),
+    url(r'^divide/?$', views.divide, name='divide'),
+    url(r'^hello_world/$', views.hello_world, name='hello_world'),
+    url(r'^asian_option/?$', views.asian_option, name='asian_option'),
+    
+    # url(r'^docs/', include('rest_framework_swagger.urls')),
 ]

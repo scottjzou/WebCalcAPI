@@ -6,17 +6,41 @@ from rest_framework.decorators import api_view
 #for class based views
 from rest_framework.views import APIView
 
+#for apiroot reverse
+from rest_framework.reverse import reverse
+
 #for asian option
 from numpy import *
 from scipy.stats import norm, lognorm
 from scipy.integrate import quad
 
 @api_view()
+def api_root(request):
+    """
+    The root of all APIs, serves as a basic presentation of the APIs aviliable, 
+    however needs manual additions of the functions.
+
+    reverse() serves as a url call to each function views.
+    """
+    return Response({
+        'hello_world': reverse('hello_world', request=request),
+        'divide': reverse('divide', request=request),
+        'multiply': reverse('multiply', request=request),
+        'asian_option': reverse('asian_option', request=request),
+    })
+
+@api_view()
 def hello_world(request):
+    """
+    An example api, this part of text will be visible when entering /hello_world.
+    """
     return Response({"message": "Hello, world!"})
 
 @api_view()
 def multiply(request):
+    """
+
+    """
     try:
         first_number = int(request.GET.get('a'))
         second_number = int(request.GET.get('b'))
