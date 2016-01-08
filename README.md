@@ -5,6 +5,7 @@ Author: [Jiahang Zou](https://github.com/scottjzou)
 
 ## Requirements
 Install by running `pip install -r requirements.txt`
+The unspecified installations are for heroku usages.
 
 * Required:
 	* Django==1.9.1
