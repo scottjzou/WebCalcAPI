@@ -27,6 +27,7 @@ def api_root(request):
         'divide': reverse('divide', request=request),
         'multiply': reverse('multiply', request=request),
         'asian_option': reverse('asian_option', request=request),
+        'add': reverse('add', request=request),
     })
 
 @api_view()
@@ -35,6 +36,27 @@ def hello_world(request):
     An example api, this part of text will be visible when entering /hello_world.
     """
     return Response({"message": "Hello, world!"})
+
+@api_view()
+def add(request):
+    """
+    An addition function. 
+    add(
+        a: int,
+        b: int,
+        ret: int
+    )
+    example call: **whatever_host**/add/?a=1&b=1
+    should return a json looks like:
+    {'function': 'add','result': 2}
+    """
+    try:
+        first_number = int(request.GET.get('a'))
+        second_number = int(request.GET.get('b'))
+        return Response({'function': 'add','result': first_number + second_number})
+    except Exception as e:
+        return Response({'function': 'add','result': 'there was an error ' + str(e)})
+
 
 @api_view()
 def multiply(request):
@@ -134,7 +156,6 @@ def asian_option(request):
         func=lambda x:iBSOption(Diff0,Var_lnDiff,K,x,Mu_lnG,Var_lnG)
         Part1,IntError=quad(func,es,K)
         return float(L*(Part1+Part2)*exp(-r*T))
-
 
 
     def gygMax(a,b):
