@@ -1,3 +1,4 @@
 .python-version
 *.pyc
 staticfiles
+.DS_Store
